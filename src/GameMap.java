@@ -219,21 +219,28 @@ public class GameMap {
 	}
 	
 	public boolean canEnter (Coord check, Entity reference) {
-		for (Entity e : getInCoord(check)) {
-			if (e.shouldBumpInto(reference)) {
-				return false; // found collision
-			}
-		}
-		return true; // no collision
+		return canEnter(check, reference, new ArrayList<Entity>());
 	}
 	
 	public boolean canEnter (Coord check, Entity reference, ArrayList <Entity> ignore) {
-		for (Entity e : getInCoord(check)) {
-			if (ignore.contains(e)) {
-				continue;
+		if (reference == null) {
+			// Special case. Collide only with walls.
+			for (Entity e : getInCoord(check)) {
+				if (ignore.contains(e)) {
+					continue;
+				}
+				if (e.type == EntityType.Wall) {
+					return false; // found collision
+				}
 			}
-			if (e.shouldBumpInto(reference)) {
-				return false; // found collision
+		} else {
+			for (Entity e : getInCoord(check)) {
+				if (ignore.contains(e)) {
+					continue;
+				}
+				if (e.shouldBumpInto(reference) || reference.shouldBumpInto(e)) {
+					return false; // found collision
+				}
 			}
 		}
 		return true; // no collision
