@@ -1,8 +1,6 @@
 /**
  * Represents the result of playing one game.
  * 
- * @author yujinwunz
- * 
  */
 public class GameResult {
 	public int getPoints() {

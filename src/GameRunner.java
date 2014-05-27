@@ -9,8 +9,6 @@ import javax.swing.JPanel;
 /**
  * Runs the game. Manages the animation loop, handles and processes input.
  * 
- * @author yujinwunz
- * 
  */
 public class GameRunner extends JPanel implements KeyListener {
 

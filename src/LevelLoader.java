@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 /**
  * A map creator which loads pre-defined levels.
- * @author yujinwunz
  *
  */
 public class LevelLoader implements MapCreator{

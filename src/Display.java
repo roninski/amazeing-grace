@@ -11,7 +11,6 @@ import javax.swing.SwingUtilities;
 
 /**
  * When initialized to a jFrame, directs flow of input. This abstracts away java's weird swing input and output mechanisms into something nicer.
- * @author yujinwunz
  *
  */
 public class Display {
@@ -61,9 +60,9 @@ public class Display {
 				// TODO Auto-generated method stub
 
 				frame.getContentPane().removeAll();
-				frame.revalidate();
+				frame.validate();
 				frame.add(pane);
-				frame.revalidate();
+				frame.validate();
 				frame.repaint();
 				System.out.println("Panel added");
 				frame.requestFocus();

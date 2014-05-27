@@ -15,7 +15,6 @@ import javax.swing.JScrollPane;
 
 /**
  * A menu. Can draw itself onto a GameDisplayer and wait for user input.
- * @author yujinwunz
  *
  */
 public class Menu extends JPanel implements ActionListener {

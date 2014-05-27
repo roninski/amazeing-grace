@@ -1,7 +1,6 @@
 
 /**
  * Contains all the pre-defined hard coded levels.
- * @author yujinwunz
  *
  */
 public class Levels {

@@ -7,8 +7,6 @@ import java.io.ObjectOutputStream;
 /**
  * Lists player controls for the game. Can be loaded or unloaded.
  * 
- * @author yujinwunz
- * 
  */
 public class Settings {
 	public static final String filename = "settings.cfg";

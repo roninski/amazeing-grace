@@ -1,7 +1,6 @@
 
 /**
  * Represents the progress made in the current game.
- * @author yujinwunz
  *
  */
 public class Progress {
