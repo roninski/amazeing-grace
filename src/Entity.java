@@ -22,7 +22,7 @@ public abstract class Entity {
 	public int tickIndex;
 
 	public EntityType type;
-	private GameMap map;
+	public GameMap map;
 	
 	public Entity (GameMap map, int drawIndex, int tickIndex, EntityType type) {
 		this.map = map;
@@ -59,6 +59,14 @@ public abstract class Entity {
 	 */
 	public void tick() {
 		this.nextlocation = this.currentlocation;
+	}
+	
+	public Coord getCurrentLocation(){
+		return this.currentlocation;
+	}
+	
+	public EntityType getType(){
+		return this.type;
 	}
 	
 	/**

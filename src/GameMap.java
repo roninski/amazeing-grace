@@ -125,6 +125,15 @@ public class GameMap {
 		return this.height;
 	}
 	
+	public Entity getPlayer(){
+		for (Entity entity : this.entities){
+			if (entity.getType() == EntityType.Player){
+				return entity;
+			}
+		}
+		return null;
+	}
+	
 	/**
 	 * Gives shortest path using only walls as collisions.
 	 * @param from
@@ -185,6 +194,7 @@ public class GameMap {
 					path.add(0, current.location);
 					current = current.previous;
 				}
+				return path;
 			}
 			
 			for (int i = 0; i < 4; i++) {

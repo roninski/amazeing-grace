@@ -8,7 +8,7 @@ public class Player extends Entity {
 	public double opacity;
 	
 	public Player(GameMap map) {
-		super(map, DRAW_INDEX_PLAYER, TICK_INDEX_PLAYER, EntityType.Ground);
+		super(map, DRAW_INDEX_PLAYER, TICK_INDEX_PLAYER, EntityType.Player);
 		// TODO Auto-generated constructor stub
 
 	}

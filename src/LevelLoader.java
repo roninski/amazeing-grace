@@ -29,6 +29,8 @@ public class LevelLoader implements MapCreator{
 					toAdd = new Wall(null);
 				} else if (data[y].charAt(x) == 'R') { // wall
 					toAdd = new RandomEnemy(null);
+				} else if (data[y].charAt(x) == 'P'){
+					toAdd = new PathfindingEnemy(null);
 				}
 				
 				if (toAdd != null) {
