@@ -22,7 +22,6 @@ public class GameRunner extends JPanel implements KeyListener {
 	 */
 	public GameRunner(GameState state) {
 		this.state = state;
-		
 	}
 
 	/**
@@ -94,9 +93,9 @@ public class GameRunner extends JPanel implements KeyListener {
 
 	public void drawHUD(Graphics g) {
 		Rectangle r = g.getClipBounds();
-		g.setColor(Color.LIGHT_GRAY);
-		g.fillRect(r.x, r.y, r.width, r.height);
 		g.setColor(Color.BLACK);
+		g.fillRect(r.x, r.y, r.width, r.height);
+		g.setColor(Color.WHITE);
 		g.drawString("Stats & instructions here", r.x, r.y + r.height/2);
 	}
 	

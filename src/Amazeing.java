@@ -7,8 +7,10 @@ public class Amazeing {
 	private static Display gameInterface;
 	
 	private static void createAndShowGUI() {
+		// load images
+		Images images = new Images();
 		// Create a jframe
-		JFrame frame = new JFrame("Amazeing! (the name... it... burns...)");
+		JFrame frame = new JFrame("Amazeing Grace");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(Display.DEFAULT_WIDTH, Display.DEFAULT_HEIGHT);
 		frame.setMinimumSize(new Dimension(Display.DEFAULT_WIDTH, Display.DEFAULT_HEIGHT));

@@ -1,4 +1,3 @@
-
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -7,10 +6,12 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.border.Border;
 
 
 /**
@@ -26,6 +27,7 @@ public class Menu extends JPanel implements ActionListener {
 	 */
 	public Menu (String title) {
 		this.title = title;
+		this.setBackground(Color.BLACK);
 	}
 	
 	/**
@@ -47,15 +49,15 @@ public class Menu extends JPanel implements ActionListener {
 		// Create layout
 		this.setSize(gameInterface.getWidth(), gameInterface.getHeight());
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		// Create title
-		JLabel lb = new JLabel();
-		lb.setText(title);
-		lb.setAlignmentX(Component.CENTER_ALIGNMENT);
-		
-		this.add(lb);
+		// Create header image
+		JLabel pic = new JLabel();
+		pic.setIcon(new ImageIcon(Images.images.get(Images.LOGO)));
+		pic.setAlignmentX(Component.CENTER_ALIGNMENT);
+		this.add(pic);
 		
 		// Create buttons
 		JPanel buttonPanel = new JPanel();
+		buttonPanel.setBackground(Color.BLACK);
 		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
 		
 		for (int i = 0; i < items.size(); i++) {
