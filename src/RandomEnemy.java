@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
@@ -24,7 +23,6 @@ public class RandomEnemy extends Entity{
 	@Override
 	public void draw(Graphics g) {
 		Rectangle r = g.getClipBounds();
-		g.setColor(Color.RED);
-		g.fillRect(r.x, r.y, r.width, r.height);
+		g.drawImage(Images.images.get(Images.DUMBENEMY), r.x, r.y, r.width, r.height, null);
 	}
 }

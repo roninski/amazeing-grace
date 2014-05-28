@@ -1,7 +1,5 @@
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.util.ArrayList;
 
 
 public class PathfindingEnemy extends Entity {
@@ -20,8 +18,7 @@ public class PathfindingEnemy extends Entity {
 	@Override
 	public void draw(Graphics g) {
 		Rectangle r = g.getClipBounds();
-		g.setColor(Color.PINK);
-		g.fillRect(r.x, r.y, r.width, r.height);
+		g.drawImage(Images.images.get(Images.ENEMY), r.x, r.y, r.width, r.height, null);
 	}
 	
 	@Override

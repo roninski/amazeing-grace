@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -42,9 +43,11 @@ public abstract class Entity {
 	 * @param g
 	 */
 	public void draw(Graphics g) {
+		// Please override this.
+		// a big red box reminds you that you haven't overriden draw for an entity, instead of just being invisible.
 		Rectangle r = g.getClipBounds();
-		// this isn't working and i'm not sure why
-		g.drawImage(Images.images.get(Images.ENEMY), r.x, r.y, r.width, r.height, null);
+		g.setColor(Color.red);
+		g.fillRect(r.x, r.y, r.width, r.height);
 	}
 
 	/**
