@@ -120,11 +120,11 @@ public class Amazeing {
 		
 		while (true) {
 			if (difficulty == Difficulty.easy) {
-				newGame = new GameState(new PrimsCreator(10, 10, seed));
+				newGame = new GameState(new PrimsCreator(11, 11, 10, -1, seed));
 			} else if (difficulty == Difficulty.medium){
-				newGame = new GameState(new PrimsCreator(20, 20, seed));
+				newGame = new GameState(new PrimsCreator(21, 21, 20, -1,  seed));
 			} else {
-				newGame = new GameState(new PrimsCreator(30, 30, seed));
+				newGame = new GameState(new PrimsCreator(31, 31, 40, -1, seed));
 			}
 			GameRunner gr = new GameRunner(newGame);
 			GameResult result = gr.play(gameInterface);

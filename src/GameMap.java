@@ -38,6 +38,11 @@ public class GameMap {
 			addEntity(e);
 		}
 	}
+	
+	public GameMap(int width, int height) {
+		this.width = width;
+		this.height = height;
+	}
 
 	/**
 	 *  Safely adds an entity into the map
