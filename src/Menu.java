@@ -72,6 +72,7 @@ public class Menu extends JPanel implements ActionListener {
 		}
 
 		JScrollPane scrollable = new JScrollPane(buttonPanel);
+		scrollable.setBackground(Color.BLACK);
 		this.add(scrollable);
 		// possess
 		gameInterface.possess(this, null, null, null, null);
