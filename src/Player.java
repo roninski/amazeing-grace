@@ -2,6 +2,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.image.ImageObserver;
 
 public class Player extends Entity {
 	public PlayerAction action = PlayerAction.Pass;
@@ -16,9 +17,7 @@ public class Player extends Entity {
 	@Override
 	public void draw(Graphics g) {
 		Rectangle r = g.getClipBounds();
-		g.setColor(Color.green);
-		g.fillRect(r.x, r.y, r.width, r.height);
-		
+		g.drawImage(Images.images.get(Images.HERO), r.x, r.y, r.width, r.height, null);	
 	}
 
 	@Override

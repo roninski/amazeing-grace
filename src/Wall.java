@@ -11,8 +11,9 @@ public class Wall extends Entity {
 	@Override
 	public void draw(Graphics g) {
 		Rectangle r = g.getClipBounds();
-		g.setColor(Color.BLACK);
-		g.fillRect(r.x, r.y, r.width, r.height);
+		g.drawImage(Images.images.get(Images.WALL), r.x, r.y, r.width, r.height, null);
+		//g.setColor(Color.BLACK);
+		//g.fillRect(r.x, r.y, r.width, r.height);
 	}
 	
 	@Override

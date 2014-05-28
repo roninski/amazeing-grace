@@ -14,6 +14,7 @@ public class Images {
 	public static final int LOSE = 5;
 	public static final int NOT_WALL = 6;
 	public static final int WALL = 7;
+	public static final int ENEMY = 8;
 	public Images() {
 		images = new ArrayList<BufferedImage>();
 		try {
@@ -25,6 +26,7 @@ public class Images {
 			images.add(ImageIO.read(new File("img/lose.jpg")));
 			images.add(ImageIO.read(new File("img/notwall.jpg")));
 			images.add(ImageIO.read(new File("img/rock.jpg")));
+			images.add(ImageIO.read(new File("img/enemy.gif")));
 		} catch (IOException ex) {
 			System.out.println("missing file");
 		}
