@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -44,6 +43,7 @@ public abstract class Entity {
 	 */
 	public void draw(Graphics g) {
 		Rectangle r = g.getClipBounds();
+		// this isn't working and i'm not sure why
 		g.drawImage(Images.images.get(Images.ENEMY), r.x, r.y, r.width, r.height, null);
 	}
 
