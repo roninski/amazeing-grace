@@ -14,7 +14,7 @@ public class Player extends Entity {
 	@Override
 	public void draw(Graphics g) {
 		Rectangle r = g.getClipBounds();
-		g.drawImage(Images.images.get(Images.HERO), r.x, r.y, r.width, r.height, null);	
+		g.drawImage(Images.images.get(Images.GRACE_U), r.x, r.y, r.width, r.height, null);	
 	}
 
 	@Override
