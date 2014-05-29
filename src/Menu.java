@@ -51,7 +51,9 @@ public class Menu extends JPanel implements ActionListener {
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		// Create header image
 		JLabel pic = new JLabel();
-		pic.setIcon(new ImageIcon(Images.images.get(Images.LOGO)));
+		if (title.equals("Amazeing")) pic.setIcon(new ImageIcon(Images.images.get(Images.LOGO)));
+		else if (title.equals("You won!")) pic.setIcon(new ImageIcon(Images.images.get(Images.WIN)));
+		else if (title.equals("Game over!")) pic.setIcon(new ImageIcon(Images.images.get(Images.LOSE)));
 		pic.setAlignmentX(Component.CENTER_ALIGNMENT);
 		this.add(pic);
 		

@@ -22,6 +22,7 @@ public class Images {
 	public static final int GRACE_U = 13;	
 	public static final int GRACE_D = 14;	
 	public static final int GRACE_R = 15;
+	public static final int BOMB = 16;
 	public Images() {
 		images = new ArrayList<BufferedImage>();
 		try {
@@ -41,6 +42,7 @@ public class Images {
 			images.add(ImageIO.read(new File("img/grace-u.gif")));			
 			images.add(ImageIO.read(new File("img/grace-d.gif")));			
 			images.add(ImageIO.read(new File("img/grace-r.gif")));			
+			images.add(ImageIO.read(new File("img/bomb.png")));			
 		} catch (IOException ex) {
 			System.out.println("missing file");
 		}
