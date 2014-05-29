@@ -53,11 +53,10 @@ public class GameState {
 
 	public void draw(Graphics g) {
 		// for now, a rect
-		g.setColor(Color.GRAY);
 		Rectangle r = g.getClipBounds();
 		int boxwidth = r.width / map.getWidth();
 		int boxheight = r.height / map.getHeight();
-		g.fillRect(r.x, r.y, r.width, r.height);
+		g.drawImage(Images.images.get(Images.NOT_WALL), r.x, r.y, r.width, r.height, null);
 		
 		// Draw children. Make sure we do it in order
 		ArrayList <Entity> entities = map.entityList();
