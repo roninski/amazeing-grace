@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -15,7 +14,7 @@ public class Spawn extends Entity{
 	@Override
 	public void draw(Graphics g) {
 		Rectangle r = g.getClipBounds();
-		g.setColor(Color.blue);
-		g.fillRect(r.x, r.y, r.width, r.height);
+		g.drawImage(Images.images.get(Images.START), r.x, r.y, r.width, r.height, null);
+
 	}
 }
