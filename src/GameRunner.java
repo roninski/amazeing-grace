@@ -40,9 +40,8 @@ public class GameRunner extends JPanel implements KeyListener {
 	public GameResult play(Display d) {
 		d.possess(this, this, null, null, null);
 		System.out.println("Game started\n");
-
 		// Intro
-
+		Sound.amazinggrace.play();
 		// Main loop
 		while (!state.isGameOver()) {
 
@@ -59,8 +58,8 @@ public class GameRunner extends JPanel implements KeyListener {
 				this.frames++;
 			}
 		}
-
 		// Outro
+		Sound.amazinggrace.stop();
 		
 		
 		return state.getResult();

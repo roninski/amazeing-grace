@@ -23,6 +23,10 @@ public class Amazeing {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
+				
+				// Music source: https://www.youtube.com/watch?v=DFDdtruytg4
+				
+
 				enterMainMenu();
 			}
 		});
