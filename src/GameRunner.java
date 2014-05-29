@@ -111,8 +111,6 @@ public class GameRunner extends JPanel implements KeyListener {
 		System.out.println("KeyPressed");
 		boolean shouldTick = true;
 		
-		
-		
 		Coord playerLocation = state.getPlayer().currentlocation;
 		// Check that animation has finished
 		if(this.frames < state.ANIMATION_DURATION_FRAMES - 2){
@@ -126,11 +124,19 @@ public class GameRunner extends JPanel implements KeyListener {
 			state.getPlayer().action = PlayerAction.Left;
 		} else if (e.getKeyCode() == Settings.CONTROLS_RIGHT) {
 			state.getPlayer().action = PlayerAction.Right;
+		} else if (e.getKeyCode() == Settings.CONTROLS_USE){
+			state.getPlayer().action = PlayerAction.Use;
 		} else {
 			shouldTick = false;
+			if (Sound.gunshot.isPlaying()){
+				Sound.gunshot.stop();
+			}
 		}
 		
 		if (shouldTick) {
+			if (Sound.gunshot.isPlaying()){
+				Sound.gunshot.stop();
+			}
 			this.frames = 0;
 			state.tick();
 			System.out.println("Ticked");

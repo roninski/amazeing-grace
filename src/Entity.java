@@ -24,7 +24,7 @@ public abstract class Entity {
 	public int tickIndex;
 
 	public EntityType type;
-	public GameMap map;
+	protected GameMap map;
 	
 	Direction direction = Direction.Down;
 	

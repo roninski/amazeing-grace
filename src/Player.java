@@ -52,6 +52,7 @@ public class Player extends Entity {
 			this.direction = Direction.Up;
 			break;
 		case Use:
+			this.use();
 			break;
 		default:
 			break;
@@ -59,6 +60,63 @@ public class Player extends Entity {
 		}
 		
 		action = PlayerAction.Unknown;
+	}
+	
+	public void use(){
+		// This is currently the code for the Gun item (minus ammunition management).
+		Entity closest = null;
+		if (this.direction == Direction.Down){
+			// x same y higher
+			int closestY = 1000000;
+			for (Entity e : map.entityList()){
+				if (e.getCurrentLocation().getX() == this.getCurrentLocation().getX() &&
+						e.getCurrentLocation().getY() > this.getCurrentLocation().getY() &&
+						e.getCurrentLocation().getY() < closestY){
+					closest = e;
+					closestY = e.getCurrentLocation().getY();
+				}
+			}
+		} else if (this.direction == Direction.Left){
+			// x lower y same
+			int closestX = -1;
+			for (Entity e : map.entityList()){
+				if (e.getCurrentLocation().getY() == this.getCurrentLocation().getY() &&
+						e.getCurrentLocation().getX() < this.getCurrentLocation().getX() &&
+						e.getCurrentLocation().getX() > closestX){
+					closest = e;
+					closestX = e.getCurrentLocation().getX();
+				}
+			}
+		} else if (this.direction == Direction.Right){
+			// x higher y same
+			int closestX = 1000000; // Like a billion ;D
+			for (Entity e : map.entityList()){
+				if (e.getCurrentLocation().getY() == this.getCurrentLocation().getY() &&
+						e.getCurrentLocation().getX() > this.getCurrentLocation().getX() &&
+						e.getCurrentLocation().getX() < closestX){
+					closest = e;
+					closestX = e.getCurrentLocation().getX();
+				}
+			}
+		} else if (this.direction == Direction.Up){
+			// x same y lower
+			int closestY = -1;
+			for (Entity e : map.entityList()){
+				if (e.getCurrentLocation().getX() == this.getCurrentLocation().getX() &&
+						e.getCurrentLocation().getY() < this.getCurrentLocation().getY() &&
+						e.getCurrentLocation().getY() > closestY){
+					closest = e;
+					closestY = e.getCurrentLocation().getY();
+				}
+			}
+		} else {
+			throw new RuntimeException("Player not facing a direction");
+		}
+		
+		if (closest != null && closest.getType() == EntityType.Enemy){
+			closest.isActive = false;
+			Sound.gunshot.play();
+		}
 	}
 
 	@Override
