@@ -35,7 +35,7 @@ public class Menu extends JPanel implements ActionListener {
 	 * @param display
 	 * @param key
 	 */
-	public void addItem(String display, Runnable key) {
+	public void addItem(String display, String key) {
 		MenuItem newItem = new MenuItem(display, key);
 		items.add(newItem);
 	}
@@ -45,7 +45,7 @@ public class Menu extends JPanel implements ActionListener {
 	 * Attaches oneself to the specified gameInterface for viewing.
 	 * @param gameInterface
 	 */
-	public void attach(Display gameInterface) {
+	public String getInput(Display gameInterface) {
 		// Create layout
 		this.setSize(gameInterface.getWidth(), gameInterface.getHeight());
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -78,6 +78,30 @@ public class Menu extends JPanel implements ActionListener {
 		gameInterface.possess(this, null, null, null, null);
 		//gameInterface.frame.add(this);
 		this.setVisible(true);
+		
+		
+		// wait for input
+		while (result == null) {
+			synchronized (resultlock) {
+				try {
+					resultlock.wait();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return result;
+	}
+	
+	private String result = null;
+	private Object resultlock = new Object();
+	private void register(String key) {
+		result = key;
+		synchronized (resultlock) {
+			resultlock.notify();
+		}
 	}
 
 	/**
@@ -87,10 +111,8 @@ public class Menu extends JPanel implements ActionListener {
 		// TODO Auto-generated method stub
 		int sender = Integer.parseInt(e.getActionCommand());
 		
-		// RUN THE COMMAND!!!!
-		Thread t = new Thread(items.get(sender).getKey());
+		register(items.get(sender).getKey());
 		
-		t.start();
 	}
 	
 	public void setDefaultButton(JButton button) {
@@ -105,9 +127,9 @@ public class Menu extends JPanel implements ActionListener {
 
 class MenuItem {
 	private String name;
-	private Runnable key;
+	private String key;
 	
-	public MenuItem (String name, Runnable key) {
+	public MenuItem (String name, String key) {
 		this.name = name;
 		this.key = key;
 	}
@@ -116,7 +138,7 @@ class MenuItem {
 		return name;
 	}
 	
-	public Runnable getKey() {
+	public String getKey() {
 		return key;
 	}
 }

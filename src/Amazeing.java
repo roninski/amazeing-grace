@@ -17,34 +17,37 @@ public class Amazeing {
 		
 		// Create a game interface
 		gameInterface = new Display(frame);
-
 		frame.setVisible(true);
 		
-		enterMainMenu();
+		Thread t = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				enterMainMenu();
+			}
+		});
+		
+		t.start();
 	}
 	
 	private static void enterMainMenu() {
 		// Attach a main menu.
-		Menu main = new Menu("Amazeing");
-		main.addItem("Quick Play", new Runnable() {
-			public void run() {
-				enterQuickplay();
-			}
-		});
-		main.addItem("Level Select", new Runnable() {
-
-			public void run() {
-				enterLevelSelect();
-			}
+	
+		while (true) {
+			Menu main = new Menu("Amazeing");
+			main.addItem("Quick Play", "quick play");
+			main.addItem("Level Select", "level select");
+			main.addItem("Leaderboard", "leaderboard");
+			String result = main.getInput(gameInterface);
 			
-		});
-		main.addItem("Leaderboard", new Runnable() {
-			public void run() {
-				leaderboard();
+			if (result.equals("quick play")) {
+				enterQuickplay();
+			} else if (result.equals("level select")) {
+				enterLevelSelect();
+			} else if (result.equals("leaderboard")) {
+				
 			}
-		});
-		main.attach(gameInterface);
-		
+		}
 	}
 	
 	private static void leaderboard() {
@@ -53,60 +56,46 @@ public class Amazeing {
 	}
 	
 	private static void enterQuickplay() {
-		Menu quickplay = new Menu("Select difficulty");
-		quickplay.addItem("Easy", new Runnable() {
-
-			public void run() {
+		while (true) {
+			Menu quickplay = new Menu("Select difficulty");
+			quickplay.addItem("Easy", "easy");
+			quickplay.addItem("Medium", "medium");
+			quickplay.addItem("Hard", "hard");
+			quickplay.addItem("Back", "back");
+			
+			String response = quickplay.getInput(gameInterface);
+			
+			if (response.equals("easy")) {
 				startGame(Difficulty.easy);
-			}
-			
-		});
-		quickplay.addItem("Medium", new Runnable() {
-
-			public void run() {
+			} else if (response.equals("medium")) {
 				startGame(Difficulty.medium);
-			}
-			
-		});
-		quickplay.addItem("Hard", new Runnable() {
-
-			public void run() {
+			} else if (response.equals("hard")) {
 				startGame(Difficulty.hard);
+			} else if (response.equals("back")) {
+				return;
 			}
-			
-		});
-		quickplay.addItem("Back", new Runnable() {
-
-			public void run() {
-				enterMainMenu();
-			}
-			
-		});
-		
-		quickplay.attach(gameInterface);
+		}
 	}
 	
 	private static void enterLevelSelect() {
-		Menu options = new Menu("Options");
-		
-		// Add an option for every level
-		for (int i = 0; i < Levels.names.length; i++) {
-			final int workaround = i;
-			options.addItem(Levels.names[i], new Runnable() {
-				public void run() {
-					playLevel(workaround);
-				}
-				
-			});
-		}
-		options.addItem("Back", new Runnable() {
-			public void run() {
-				enterMainMenu();
-			}
+		while (true) {
+			Menu options = new Menu("Options");
 			
-		});
-		
-		options.attach(gameInterface);
+			// Add an option for every level
+			for (int i = 0; i < Levels.names.length; i++) {
+				final int workaround = i;
+				options.addItem(Levels.names[i], String.format("%d", i));
+			}
+			options.addItem("Back", "back");
+			
+			String result = options.getInput(gameInterface);
+			if (result.equals("back")) {
+				break;
+			} else {
+				int level = Integer.parseInt(result);
+				playLevel(level);
+			}
+		}
 	}
 	
 	/**
@@ -138,41 +127,12 @@ public class Amazeing {
 			} else {
 				menu = new Menu("Game over!");
 			}
-			menu.addItem("Replay level", new Runnable() {
-				public void run() {
-					// TODO Auto-generated method stub
-					menuSelection = 0;
-					synchronized (lock) {
-						lock.notify();
-					}
-				}
-			});
+			menu.addItem("Replay level", "replay");
+			menu.addItem("Back to main menu", "back");
 			
-			menu.addItem("Back to main menu", new Runnable() {
-				public void run() {
-					// TODO Auto-generated method stub
-					menuSelection = 1;
-					synchronized (lock) {
-						lock.notify();
-					}
-				}
-			});
-			
-			menu.attach(gameInterface);
+			String menuresult = menu.getInput(gameInterface);
 
-			// Wait for selection to be made
-			synchronized(lock) {
-				try {
-					lock.wait();
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			
-			if (menuSelection == 0) {
-				// replay
-			} else {
+			if (menuresult == "back") {
 				break;
 			}
 		}
