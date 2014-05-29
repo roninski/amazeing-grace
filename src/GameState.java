@@ -55,14 +55,15 @@ public class GameState {
 		Rectangle r = g.getClipBounds();
 		int boxwidth = r.width / map.getWidth();
 		int boxheight = r.height / map.getHeight();
-		g.drawImage(Images.images.get(Images.NOT_WALL), r.x, r.y, r.width, r.height, null);
-		/*for (int i = 0; i < r.width; i += boxwidth) {
-			for (int j = 0; j < r.height; j += boxheight) {
-				g.setClip(i, j, boxwidth, boxheight);
-				g.drawImage(Images.images.get(Images.NOT_WALL), i + r.width, j + r.height, r.width, r.height, null);
+
+		// Predraw the GROUND
+		for (int i = 0; i < map.getWidth(); i++) {
+			for (int j = 0; j < map.getHeight(); j++) {
+				g.drawImage(Images.images.get(Images.NOT_WALL), i* boxwidth + r.x, j * boxheight + r.y, boxwidth, boxheight, 
+												null);
+				
 			}
-		}*/
-		
+		}
 		// Draw children. Make sure we do it in order
 		ArrayList <Entity> entities = map.entityList();
 		Collections.sort(entities, new Comparator<Entity>() {
@@ -109,6 +110,7 @@ public class GameState {
 			}
 			
 		});
+		
 		for (Entity e : entities) {
 			e.ontick();
 			
