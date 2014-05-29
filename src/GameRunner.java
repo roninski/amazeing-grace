@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
@@ -73,9 +74,7 @@ public class GameRunner extends JPanel implements KeyListener {
 		int widthWithBorder = 2 + state.getWidth();
 		
 		int boxSize = Math.min((bound.width - hud_width) / widthWithBorder, bound.height  / heightWithBorder);
-		
-		// TODO: Draw fade to black border
-		
+				
 		// Draw the game state
 		int centerx = bound.width / 2;
 		int centery = bound.height / 2;
@@ -94,9 +93,10 @@ public class GameRunner extends JPanel implements KeyListener {
 	public void drawHUD(Graphics g) {
 		Rectangle r = g.getClipBounds();
 		g.setColor(Color.BLACK);
+		g.setFont(new Font("Helvetica", Font.PLAIN, 18));
 		g.fillRect(r.x, r.y, r.width, r.height);
 		g.setColor(Color.WHITE);
-		g.drawString("Stats & instructions here", r.x, r.y + r.height/2);
+		g.drawString("Score:", r.x, r.y + r.height/2);
 	}
 	
 	public void keyTyped(KeyEvent e) {
