@@ -111,13 +111,13 @@ public class GameRunner extends JPanel implements KeyListener {
 		// Check if they are controls.
 		Coord playerLocation = state.getPlayer().currentlocation;
 		if (e.getKeyCode() == Settings.CONTROLS_UP) {
-			state.getPlayer().nextlocation = new Coord(playerLocation.getX(), playerLocation.getY()-1);
+			state.getPlayer().action = PlayerAction.Up;
 		} else if (e.getKeyCode() == Settings.CONTROLS_DOWN) {
-			state.getPlayer().nextlocation = new Coord(playerLocation.getX(), playerLocation.getY()+1);
+			state.getPlayer().action = PlayerAction.Down;
 		} else if (e.getKeyCode() == Settings.CONTROLS_LEFT) {
-			state.getPlayer().nextlocation = new Coord(playerLocation.getX()-1, playerLocation.getY());
+			state.getPlayer().action = PlayerAction.Left;
 		} else if (e.getKeyCode() == Settings.CONTROLS_RIGHT) {
-			state.getPlayer().nextlocation = new Coord(playerLocation.getX()+1, playerLocation.getY());
+			state.getPlayer().action = PlayerAction.Right;
 		} else {
 			shouldTick = false;
 		}

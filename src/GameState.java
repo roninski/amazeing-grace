@@ -71,7 +71,19 @@ public class GameState {
 		});
 		
 		for (Entity e : entities) {
-			g.setClip(r.x + e.currentlocation.getX() * boxwidth, r.y + e.currentlocation.getY() * boxheight, boxwidth, boxheight);
+			Coord old = e.prevlocation;
+			Coord goal = e.currentlocation;
+			
+			double ratio = Math.min(1.0, ((double)(Entity.frameNumber - e.lastTickFrame))/ ANIMATION_DURATION_FRAMES);
+			if (old.equals(goal)) {
+				ratio = 1.0; // avoid precision problems
+			}
+			// Calculate
+			double newx = old.getX() * (1-ratio) + goal.getX() * ratio;
+			double newy = old.getY() * (1-ratio) + goal.getY() * ratio;
+			
+			
+			g.setClip((int)(r.x + newx * boxwidth), (int)(r.y + newy * boxheight), boxwidth, boxheight);
 			e.draw(g);
 		}
 	}
@@ -93,7 +105,7 @@ public class GameState {
 			
 		});
 		for (Entity e : entities) {
-			e.tick();
+			e.ontick();
 			
 			// check that the square can be moved to
 			ArrayList <Entity> inDest = map.getInCoord(e.nextlocation);
@@ -183,4 +195,6 @@ public class GameState {
 	public int getWidth() {
 		return map.getWidth();
 	}
+	
+	public final int ANIMATION_DURATION_FRAMES = 10;
 }

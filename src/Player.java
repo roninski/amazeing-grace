@@ -14,7 +14,15 @@ public class Player extends Entity {
 	@Override
 	public void draw(Graphics g) {
 		Rectangle r = g.getClipBounds();
-		g.drawImage(Images.images.get(Images.GRACE_U), r.x, r.y, r.width, r.height, null);	
+		if (this.direction == Direction.Up){ 
+			g.drawImage(Images.images.get(Images.GRACE_U), r.x, r.y, r.width, r.height, null);	
+		} else if (this.direction == Direction.Left){ 
+			g.drawImage(Images.images.get(Images.GRACE_L), r.x, r.y, r.width, r.height, null);	
+		} else if (this.direction == Direction.Right){ 
+			g.drawImage(Images.images.get(Images.GRACE_R), r.x, r.y, r.width, r.height, null);	
+		} else if (this.direction == Direction.Down){ 
+			g.drawImage(Images.images.get(Images.GRACE_D), r.x, r.y, r.width, r.height, null);	
+		}
 	}
 
 	@Override
@@ -22,6 +30,7 @@ public class Player extends Entity {
 		switch(this.action) {
 		case Down:
 			nextlocation = new Coord(currentlocation.getX(), currentlocation.getY()+1);
+			this.direction = Direction.Down;
 			break;
 		case Drop:
 			// Drops the current item ON THE GROUUUNNNND. or swaps if player is on another item.
@@ -29,15 +38,18 @@ public class Player extends Entity {
 			break;
 		case Left:
 			nextlocation = new Coord(currentlocation.getX()-1, currentlocation.getY());
+			this.direction = Direction.Left;
 			break;
 		case Pass:
 			// do nothing
 			break;
 		case Right:
 			nextlocation = new Coord(currentlocation.getX()+1, currentlocation.getY());
+			this.direction = Direction.Right;
 			break;
 		case Up:
 			nextlocation = new Coord(currentlocation.getX(), currentlocation.getY()-1);
+			this.direction = Direction.Up;
 			break;
 		case Use:
 			break;

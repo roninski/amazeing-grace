@@ -6,9 +6,11 @@ public abstract class Entity {
 	// The current animation frame number, used in choosing the sprite to draw
 	// in animations.
 	public static int frameNumber = 0;
+	public int lastTickFrame = -100; // Avoid initial animation!
 
 	public Coord currentlocation = new Coord(0, 0);
 	public Coord nextlocation = new Coord(0, 0);
+	public Coord prevlocation = new Coord(0, 0); // for smooth animations
 
 	// Determines if this entity is to be considered, ever. If this variable is
 	// false, then this entity is effectively non existent and should be removed
@@ -23,6 +25,9 @@ public abstract class Entity {
 
 	public EntityType type;
 	public GameMap map;
+	
+	Direction direction = Direction.Down;
+	
 	
 	public Entity (GameMap map, int drawIndex, int tickIndex, EntityType type) {
 		this.map = map;
@@ -57,8 +62,19 @@ public abstract class Entity {
 	 * 
 	 * @param m
 	 */
-	public void tick() {
+	public final void ontick() {
 		this.nextlocation = this.currentlocation;
+		this.prevlocation = this.currentlocation;
+		tick();
+		
+		this.lastTickFrame = Entity.frameNumber;
+	}
+	
+	/** 
+	 * Do not call this method directly. Use ontick() instead, which will also take into account direction of entity, sanitizing nextlocation and updating previouslocation.
+	 */
+	public void tick() {
+		// Default tick
 	}
 	
 	public Coord getCurrentLocation(){
