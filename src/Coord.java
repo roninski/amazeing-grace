@@ -31,4 +31,13 @@ public class Coord {
 		}
 		return false;
 	}
+	
+	public double euclidianDistance(Coord c){
+		return Math.sqrt((Math.pow(this.getX() - c.getX(),2) 
+				+ Math.pow(this.getY() - c.getY(), 2)));
+	}
+	
+	public int manhattanDistance(Coord c){
+		return Math.abs(this.getX() - c.getX()) + Math.abs(this.getY() + c.getY()); 
+	}
 }

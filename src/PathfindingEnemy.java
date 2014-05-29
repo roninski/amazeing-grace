@@ -1,5 +1,6 @@
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
 
 public class PathfindingEnemy extends Entity {
@@ -12,7 +13,10 @@ public class PathfindingEnemy extends Entity {
 	public void tick() {
 		// pathfind to the player
 		Coord playerLocation = map.getPlayer().getCurrentLocation();
-		nextlocation = map.shortestPath(this.getCurrentLocation(), playerLocation).get(1);
+		ArrayList<Coord> path = map.shortestPath(this.getCurrentLocation(), playerLocation);
+		if (playerLocation.euclidianDistance(this.getCurrentLocation()) < 10){
+			this.nextlocation = path.get(1);
+		}
 	}
 		
 	@Override
