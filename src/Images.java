@@ -18,6 +18,10 @@ public class Images {
 	public static final int DUMBENEMY = 9;
 	public static final int EXIT = 10;
 	public static final int START = 11;
+	public static final int GRACE_L = 12;
+	public static final int GRACE_U = 13;	
+	public static final int GRACE_D = 14;	
+	public static final int GRACE_R = 15;
 	public Images() {
 		images = new ArrayList<BufferedImage>();
 		try {
@@ -32,7 +36,11 @@ public class Images {
 			images.add(ImageIO.read(new File("img/enemy.gif")));
 			images.add(ImageIO.read(new File("img/dumbenemy.gif")));
 			images.add(ImageIO.read(new File("img/exit.gif")));			
-			images.add(ImageIO.read(new File("img/start.gif")));			
+			images.add(ImageIO.read(new File("img/start.gif")));
+			images.add(ImageIO.read(new File("img/grace-l.gif")));			
+			images.add(ImageIO.read(new File("img/grace-u.gif")));			
+			images.add(ImageIO.read(new File("img/grace-d.gif")));			
+			images.add(ImageIO.read(new File("img/grace-r.gif")));			
 		} catch (IOException ex) {
 			System.out.println("missing file");
 		}
