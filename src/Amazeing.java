@@ -41,7 +41,8 @@ public class Amazeing {
 			Menu main = new Menu("Amazeing");
 			main.addItem("Quick Play", "quick play");
 			main.addItem("Level Select", "level select");
-			main.addItem("Leaderboard", "leaderboard");
+			//main.addItem("Leaderboard", "leaderboard");
+			main.addItem("Quit", "quit");
 			String result = main.getInput(gameInterface);
 			
 			if (result.equals("quick play")) {
@@ -50,6 +51,8 @@ public class Amazeing {
 				enterLevelSelect();
 			} else if (result.equals("leaderboard")) {
 				
+			} else if (result.equals("quit")) {
+
 			}
 		}
 	}
@@ -160,7 +163,7 @@ public class Amazeing {
 	}
 
 	private static void submitCampaignHighscore () {
-		// TODO: check if we qualify. If yes, ask for name, enter scorebaord.
+		// TODO: check if we qualify. If yes, ask for name, enter scoreboard.
 		// If no, main menu.
 		
 		// scoring goes: 1. levels passed 2. total score in all passed levels

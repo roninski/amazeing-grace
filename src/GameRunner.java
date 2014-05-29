@@ -18,7 +18,6 @@ public class GameRunner extends JPanel implements KeyListener {
 
 	/**
 	 * Creates a new game runner, which contains a game state, and an entity.
-	 * Let's create our game panel and shit yo.
 	 * 
 	 * @param state
 	 */
@@ -85,7 +84,6 @@ public class GameRunner extends JPanel implements KeyListener {
 
 		state.draw(g);
 		
-		// TODO: Draw hud
 		g.setClip(centerx + boxSize * state.getWidth() / 2 - hud_width/2, centery - boxSize * state.getHeight() / 2, hud_width,  boxSize * state.getHeight());
 		drawHUD(g);
 		
@@ -99,7 +97,9 @@ public class GameRunner extends JPanel implements KeyListener {
 		g.setFont(new Font("Helvetica", Font.PLAIN, 18));
 		g.fillRect(r.x, r.y, r.width, r.height);
 		g.setColor(Color.WHITE);
-		g.drawString("Score:", r.x, r.y + r.height/2);
+		g.drawString("Score:", r.x, r.y + r.height/5);
+		//g.drawString(score, r.x, r.y + 2*r.height/5);
+		g.drawString("Press ESC to Quit", r.x, r.y + r.height - 1);
 	}
 	
 	public void keyTyped(KeyEvent e) {
@@ -116,15 +116,17 @@ public class GameRunner extends JPanel implements KeyListener {
 		if(this.frames < state.ANIMATION_DURATION_FRAMES - 2){
 			shouldTick = false;
 		// Check if they are controls.
-		} else if (e.getKeyCode() == Settings.CONTROLS_UP) {
+		} else if (e.getKeyCode() == Settings.CONTROLS_ESC) {
+			state.stop();
+		} else if (e.getKeyCode() == Settings.CONTROLS_UP || e.getKeyCode() == Settings.CONTROLS_W) {
 			state.getPlayer().action = PlayerAction.Up;
-		} else if (e.getKeyCode() == Settings.CONTROLS_DOWN) {
+		} else if (e.getKeyCode() == Settings.CONTROLS_DOWN || e.getKeyCode() == Settings.CONTROLS_S) {
 			state.getPlayer().action = PlayerAction.Down;
-		} else if (e.getKeyCode() == Settings.CONTROLS_LEFT) {
+		} else if (e.getKeyCode() == Settings.CONTROLS_LEFT || e.getKeyCode() == Settings.CONTROLS_A) {
 			state.getPlayer().action = PlayerAction.Left;
-		} else if (e.getKeyCode() == Settings.CONTROLS_RIGHT) {
+		} else if (e.getKeyCode() == Settings.CONTROLS_RIGHT || e.getKeyCode() == Settings.CONTROLS_D) {
 			state.getPlayer().action = PlayerAction.Right;
-		} else if (e.getKeyCode() == Settings.CONTROLS_USE){
+		} else if (e.getKeyCode() == Settings.CONTROLS_USE) {
 			state.getPlayer().action = PlayerAction.Use;
 		} else {
 			shouldTick = false;

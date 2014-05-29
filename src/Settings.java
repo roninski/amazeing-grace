@@ -19,6 +19,11 @@ public class Settings {
 	public static int CONTROLS_RIGHT = KeyEvent.VK_RIGHT;
 	public static int CONTROLS_UP = KeyEvent.VK_UP;
 	public static int CONTROLS_DOWN = KeyEvent.VK_DOWN;
+	public static int CONTROLS_W = KeyEvent.VK_W;
+	public static int CONTROLS_A = KeyEvent.VK_A;
+	public static int CONTROLS_S = KeyEvent.VK_S;
+	public static int CONTROLS_D = KeyEvent.VK_D;
+	public static int CONTROLS_ESC = KeyEvent.VK_ESCAPE;
 
 	public static int CONTROLS_USE = KeyEvent.VK_SPACE;
 	public static int CONTROLS_DROP = KeyEvent.VK_G;
