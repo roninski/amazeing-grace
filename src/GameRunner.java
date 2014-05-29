@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 public class GameRunner extends JPanel implements KeyListener {
 
 	private GameState state;
+	private int frames;
 
 	/**
 	 * Creates a new game runner, which contains a game state, and an entity.
@@ -23,6 +24,7 @@ public class GameRunner extends JPanel implements KeyListener {
 	 */
 	public GameRunner(GameState state) {
 		this.state = state;
+		this.frames = 0;
 	}
 
 	/**
@@ -53,7 +55,9 @@ public class GameRunner extends JPanel implements KeyListener {
 			System.out.println(Thread.currentThread());
 			Entity.frameNumber++;
 			repaint();
-
+			if (this.frames < state.ANIMATION_DURATION_FRAMES){
+				this.frames++;
+			}
 		}
 
 		// Outro
@@ -107,10 +111,15 @@ public class GameRunner extends JPanel implements KeyListener {
 
 		System.out.println("KeyPressed");
 		boolean shouldTick = true;
-
-		// Check if they are controls.
+		
+		
+		
 		Coord playerLocation = state.getPlayer().currentlocation;
-		if (e.getKeyCode() == Settings.CONTROLS_UP) {
+		// Check that animation has finished
+		if(this.frames < state.ANIMATION_DURATION_FRAMES - 2){
+			shouldTick = false;
+		// Check if they are controls.
+		} else if (e.getKeyCode() == Settings.CONTROLS_UP) {
 			state.getPlayer().action = PlayerAction.Up;
 		} else if (e.getKeyCode() == Settings.CONTROLS_DOWN) {
 			state.getPlayer().action = PlayerAction.Down;
@@ -121,8 +130,9 @@ public class GameRunner extends JPanel implements KeyListener {
 		} else {
 			shouldTick = false;
 		}
-
+		
 		if (shouldTick) {
+			this.frames = 0;
 			state.tick();
 			System.out.println("Ticked");
 		}
