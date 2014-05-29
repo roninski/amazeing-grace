@@ -57,6 +57,12 @@ public class GameState {
 		int boxwidth = r.width / map.getWidth();
 		int boxheight = r.height / map.getHeight();
 		g.drawImage(Images.images.get(Images.NOT_WALL), r.x, r.y, r.width, r.height, null);
+		/*for (int i = 0; i < r.width; i += boxwidth) {
+			for (int j = 0; j < r.height; j += boxheight) {
+				g.setClip(i, j, boxwidth, boxheight);
+				g.drawImage(Images.images.get(Images.NOT_WALL), i + r.width, j + r.height, r.width, r.height, null);
+			}
+		}*/
 		
 		// Draw children. Make sure we do it in order
 		ArrayList <Entity> entities = map.entityList();
