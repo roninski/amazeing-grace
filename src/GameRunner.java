@@ -58,8 +58,13 @@ public class GameRunner extends JPanel implements KeyListener {
 			}
 		}
 		// Outro
-		Sound.amazinggrace.stop();
-		
+		try{
+			Sound.amazinggrace.stop();
+		} catch(IllegalStateException E){
+			// We are trying to stop sound which never started
+			// (e.g. on Steele's laptop)
+			// fail silently
+		}
 		
 		return state.getResult();
 	}
