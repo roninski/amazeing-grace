@@ -1,5 +1,5 @@
 /**
- * A custom coordinate class containing L2 norms useful 
+ * A custom coordinate class containing useful metrics
  * in geometry and pathfinding.
  *
  * @author Yujin, Luke, Steele, Michael 
