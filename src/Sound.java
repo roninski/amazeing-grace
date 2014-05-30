@@ -54,9 +54,13 @@ public class Sound {
 	 * Stop the track
 	 */
 	public void stop(){
-		clip.stop();
-		clip.setFramePosition(0);
-		isPlaying = false;
+		try{
+			clip.stop();
+			clip.setFramePosition(0);
+			isPlaying = false;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public boolean isPlaying(){
