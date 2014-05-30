@@ -73,6 +73,7 @@ public class GameRunner extends JPanel implements KeyListener {
 	public void paintComponent(Graphics g) {
 		final int hud_width = 250;
 		
+		
 		Rectangle bound = g.getClipBounds();
 		// Finds a normalized bounding box and draws that.
 		// Leave some for the borders.
@@ -85,8 +86,14 @@ public class GameRunner extends JPanel implements KeyListener {
 		// Draw the game state
 		int centerx = bound.width / 2;
 		int centery = bound.height / 2;
-		g.setClip(centerx - boxSize * state.getWidth() / 2 - hud_width/2, centery - boxSize * state.getHeight() / 2, boxSize * state.getWidth(), boxSize * state.getHeight());
+		
 
+		// Prepare a nice border
+		g.setColor(Color.BLACK);
+		g.fillRect(bound.x, bound.y, bound.width, bound.height);
+		
+		g.setClip(centerx - boxSize * state.getWidth() / 2 - hud_width/2, centery - boxSize * state.getHeight() / 2, boxSize * state.getWidth(), boxSize * state.getHeight());
+		
 		state.draw(g);
 		
 		g.setClip(centerx + boxSize * state.getWidth() / 2 - hud_width/2, centery - boxSize * state.getHeight() / 2, hud_width,  boxSize * state.getHeight());

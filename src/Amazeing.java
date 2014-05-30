@@ -49,10 +49,8 @@ public class Amazeing {
 				enterQuickplay();
 			} else if (result.equals("level select")) {
 				enterLevelSelect();
-			} else if (result.equals("leaderboard")) {
-				
 			} else if (result.equals("quit")) {
-
+				System.exit(0);
 			}
 		}
 	}
@@ -118,9 +116,9 @@ public class Amazeing {
 			if (difficulty == Difficulty.easy) {
 				newGame = new GameState(new QuickPlayCreator(11, 11, 10, -1, seed, difficulty));
 			} else if (difficulty == Difficulty.medium){
-				newGame = new GameState(new QuickPlayCreator(21, 21, 20, -1, seed, difficulty));
+				newGame = new GameState(new QuickPlayCreator(15, 15, 20, -1, seed, difficulty));
 			} else {
-				newGame = new GameState(new QuickPlayCreator(31, 31, 40, 0, seed, difficulty));
+				newGame = new GameState(new QuickPlayCreator(21, 21, 40, 0, seed, difficulty));
 			}
 			GameRunner gr = new GameRunner(newGame);
 			GameResult result = gr.play(gameInterface);
