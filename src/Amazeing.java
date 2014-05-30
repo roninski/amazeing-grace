@@ -72,6 +72,7 @@ public class Amazeing {
 			quickplay.addItem("Easy", "easy");
 			quickplay.addItem("Medium", "medium");
 			quickplay.addItem("Hard", "hard");
+			quickplay.addItem("Impossible", "impossible");
 			quickplay.addItem("Back", "back");
 			
 			String response = quickplay.getInput(gameInterface);
@@ -82,6 +83,8 @@ public class Amazeing {
 				startGame(Difficulty.medium);
 			} else if (response.equals("hard")) {
 				startGame(Difficulty.hard);
+			} else if (response.equals("impossible")){
+				startGame(Difficulty.impossible);
 			} else if (response.equals("back")) {
 				return;
 			}
@@ -123,8 +126,11 @@ public class Amazeing {
 				newGame = new GameState(new QuickPlayCreator(11, 11, 10, -1, seed, difficulty));
 			} else if (difficulty == Difficulty.medium){
 				newGame = new GameState(new QuickPlayCreator(15, 15, 20, -1, seed, difficulty));
-			} else {
+			} else if (difficulty == Difficulty.hard) {
 				newGame = new GameState(new QuickPlayCreator(21, 21, 40, 0, seed, difficulty));
+			} else {
+				newGame = new GameState(new QuickPlayCreator(41, 41, 80, 0, seed, difficulty));
+				System.out.println("Gamestate impossible made");
 			}
 			GameRunner gr = new GameRunner(newGame);
 			GameResult result = gr.play(gameInterface);

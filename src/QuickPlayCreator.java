@@ -17,7 +17,11 @@ public class QuickPlayCreator extends PrimsCreator {
 		ArrayList<Entity> entities =  super.create();
 		int numRandom, numPathfinding, numAmmoBox;
 		Random r = new Random();
-		if (this.difficulty == Difficulty.hard) {
+		if (this.difficulty == Difficulty.impossible){
+			numRandom = 50;
+			numPathfinding = 35;
+			numAmmoBox = 10;
+		} else if (this.difficulty == Difficulty.hard) {
 			numRandom = 20;
 			numPathfinding = 15;
 			numAmmoBox = 5;

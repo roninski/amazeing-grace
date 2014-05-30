@@ -5,7 +5,7 @@
  */
 public class Levels {
 	public final static int nLevels = 5;
-	public final static String[] names = {"Tutorial Easy","Tutorial Medium","Tutorial Hard","Empty","Empty"};
+	public final static String[] names = {"Movement Tutorial","Guard Tutorial","Assassin Tutorial","Murder Tutorial","Ammunition Tutorial", "Puzzle 1"};
 	
 	public final static String[][] levels = {
 		// level 1
@@ -104,6 +104,28 @@ public class Levels {
 			"*P*",
 			"*P*",
 			"*E*",
-		}
+		},
+		{
+			"*S*     *        P*",
+			"* * * * * ***** * *",
+			"* * * * * *   * * *",
+			"* * * * * * * * *P*",
+			"* *P*P* * * * * ***",
+			"* ***** * * * *  A*",
+			"*P          * * * *",
+			"* ***** * * * * * *",
+			"* *P*P* * * * * * *",
+			"* * * * * * * * * *",
+			"* * * * * * * * * *",
+			"* * * * * * * * * *",
+			"*P*       * * * * *",
+			"*A*********P* * * *",
+			"*P*PP *   * * * * *",
+			"*P*P* * * *P* * * *",
+			"*P* * * * *P*     *",
+			"*P* * * * *********",
+			"*PP *   *    PPPP E",
+			"*******************",
+		},
 	};
 }
