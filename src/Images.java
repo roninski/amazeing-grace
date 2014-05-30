@@ -35,6 +35,7 @@ public class Images {
 	
 	public static final int BULLET = 24;
 	public static final int AMMO = 25;
+
 	public Images() {
 		images = new ArrayList<BufferedImage>();
 		try {
@@ -55,7 +56,7 @@ public class Images {
 			images.add(ImageIO.read(new File("img/grace-d.gif")));			
 			images.add(ImageIO.read(new File("img/grace-r.gif")));			
 			images.add(ImageIO.read(new File("img/bomb.gif")));		
-			images.add(ImageIO.read(new File("img/blood.jpg")));
+			images.add(ImageIO.read(new File("img/blood.gif")));
 
 			images.add(ImageIO.read(new File("img/grace-blood-l.gif")));			
 			images.add(ImageIO.read(new File("img/grace-blood-u.gif")));			
