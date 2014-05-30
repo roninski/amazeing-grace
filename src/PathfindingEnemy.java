@@ -33,6 +33,9 @@ public class PathfindingEnemy extends Entity {
 		if (other.getType() == EntityType.Wall){
 			return true;
 		}
+		if (other.getType() == EntityType.Enemy) {
+			return true;
+		}
 		return false;
 	}
 }

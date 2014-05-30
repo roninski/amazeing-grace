@@ -18,8 +18,8 @@ public class QuickPlayCreator extends PrimsCreator {
 		int numRandom, numPathfinding;
 		Random r = new Random();
 		if (this.difficulty == Difficulty.hard) {
-			numRandom = 16;
-			numPathfinding = 8;
+			numRandom = 50;
+			numPathfinding = 20;
 		} else if (this.difficulty == Difficulty.medium){
 			numRandom = 8;
 			numPathfinding = 4;

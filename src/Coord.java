@@ -38,6 +38,6 @@ public class Coord {
 	}
 	
 	public int manhattanDistance(Coord c){
-		return Math.abs(this.getX() - c.getX()) + Math.abs(this.getY() + c.getY()); 
+		return Math.abs(this.getX() - c.getX()) + Math.abs(this.getY() - c.getY()); 
 	}
 }

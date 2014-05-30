@@ -125,15 +125,16 @@ public class GameState {
 			}
 			if (e.nextlocation.getX() < 0 || e.nextlocation.getX() >= map.getWidth()) {
 				shouldBump = true;
-			}
-			if (e.nextlocation.getY() < 0 || e.nextlocation.getY() >= map.getHeight()) {
+				e.collide(null);
+			} else if (e.nextlocation.getY() < 0 || e.nextlocation.getY() >= map.getHeight()) {
 				shouldBump = true;
+				e.collide(null);
 			}
 			
 			if (shouldBump && !e.nextlocation.equals(e.currentlocation)) {
 				// collide with bump, bump, then collide with current location
 				for (Entity a : inDest) {
-					if (a.shouldBumpInto(e) || e.shouldBumpInto(a)) {
+					if ((a.shouldBumpInto(e) || e.shouldBumpInto(a)) && a.isActive && e.isActive) {
 						a.collide(e);
 						e.collide(a);
 					}

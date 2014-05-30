@@ -4,6 +4,7 @@ import java.awt.Rectangle;
 public class Player extends Entity {
 	public PlayerAction action = PlayerAction.Pass;
 	public double opacity;
+	public boolean bloody = false;
 	
 	public Player(GameMap map) {
 		super(map, DRAW_INDEX_PLAYER, TICK_INDEX_PLAYER, EntityType.Player);
@@ -14,14 +15,28 @@ public class Player extends Entity {
 	@Override
 	public void draw(Graphics g) {
 		Rectangle r = g.getClipBounds();
-		if (this.direction == Direction.Up){ 
-			g.drawImage(Images.images.get(Images.GRACE_U), r.x, r.y, r.width, r.height, null);	
-		} else if (this.direction == Direction.Left){ 
-			g.drawImage(Images.images.get(Images.GRACE_L), r.x, r.y, r.width, r.height, null);	
-		} else if (this.direction == Direction.Right){ 
-			g.drawImage(Images.images.get(Images.GRACE_R), r.x, r.y, r.width, r.height, null);	
-		} else if (this.direction == Direction.Down){ 
-			g.drawImage(Images.images.get(Images.GRACE_D), r.x, r.y, r.width, r.height, null);	
+		
+		if (this.bloody) {
+			System.out.println("Blood");
+			if (this.direction == Direction.Up){ 
+				g.drawImage(Images.images.get(Images.GRACE_BLOOD_U), r.x, r.y, r.width, r.height, null);	
+			} else if (this.direction == Direction.Left){ 
+				g.drawImage(Images.images.get(Images.GRACE_BLOOD_L), r.x, r.y, r.width, r.height, null);	
+			} else if (this.direction == Direction.Right){ 
+				g.drawImage(Images.images.get(Images.GRACE_BLOOD_R), r.x, r.y, r.width, r.height, null);	
+			} else if (this.direction == Direction.Down){ 
+				g.drawImage(Images.images.get(Images.GRACE_BLOOD_D), r.x, r.y, r.width, r.height, null);	
+			}
+		} else {
+			if (this.direction == Direction.Up){ 
+				g.drawImage(Images.images.get(Images.GRACE_U), r.x, r.y, r.width, r.height, null);	
+			} else if (this.direction == Direction.Left){ 
+				g.drawImage(Images.images.get(Images.GRACE_L), r.x, r.y, r.width, r.height, null);	
+			} else if (this.direction == Direction.Right){ 
+				g.drawImage(Images.images.get(Images.GRACE_R), r.x, r.y, r.width, r.height, null);	
+			} else if (this.direction == Direction.Down){ 
+				g.drawImage(Images.images.get(Images.GRACE_D), r.x, r.y, r.width, r.height, null);	
+			}
 		}
 	}
 
@@ -71,7 +86,7 @@ public class Player extends Entity {
 			for (Entity e : map.entityList()){
 				if (e.getCurrentLocation().getX() == this.getCurrentLocation().getX() &&
 						e.getCurrentLocation().getY() > this.getCurrentLocation().getY() &&
-						e.getCurrentLocation().getY() < closestY){
+						e.getCurrentLocation().getY() < closestY && e.getType() != EntityType.Ground){
 					closest = e;
 					closestY = e.getCurrentLocation().getY();
 				}
@@ -82,7 +97,7 @@ public class Player extends Entity {
 			for (Entity e : map.entityList()){
 				if (e.getCurrentLocation().getY() == this.getCurrentLocation().getY() &&
 						e.getCurrentLocation().getX() < this.getCurrentLocation().getX() &&
-						e.getCurrentLocation().getX() > closestX){
+						e.getCurrentLocation().getX() > closestX && e.getType() != EntityType.Ground){
 					closest = e;
 					closestX = e.getCurrentLocation().getX();
 				}
@@ -93,7 +108,7 @@ public class Player extends Entity {
 			for (Entity e : map.entityList()){
 				if (e.getCurrentLocation().getY() == this.getCurrentLocation().getY() &&
 						e.getCurrentLocation().getX() > this.getCurrentLocation().getX() &&
-						e.getCurrentLocation().getX() < closestX){
+						e.getCurrentLocation().getX() < closestX && e.getType() != EntityType.Ground){
 					closest = e;
 					closestX = e.getCurrentLocation().getX();
 				}
@@ -104,7 +119,7 @@ public class Player extends Entity {
 			for (Entity e : map.entityList()){
 				if (e.getCurrentLocation().getX() == this.getCurrentLocation().getX() &&
 						e.getCurrentLocation().getY() < this.getCurrentLocation().getY() &&
-						e.getCurrentLocation().getY() > closestY){
+						e.getCurrentLocation().getY() > closestY  && e.getType() != EntityType.Ground){
 					closest = e;
 					closestY = e.getCurrentLocation().getY();
 				}
@@ -115,8 +130,16 @@ public class Player extends Entity {
 		
 		if (closest != null && closest.getType() == EntityType.Enemy){
 			closest.isActive = false;
-			Sound.gunshot.play();
+			Blood b = new Blood(map);
+			b.currentlocation = closest.currentlocation;
+			map.addEntity(b);
+			
+			// Calculate if we need blood
+			if (this.currentlocation.manhattanDistance(b.currentlocation) <= 1) {
+				this.bloody = true;
+			}
 		}
+		Sound.gunshot.play();
 	}
 
 	@Override
@@ -131,6 +154,9 @@ public class Player extends Entity {
 
 	@Override
 	public void collide(Entity other) {
+		if (other == null) {
+			return;
+		}
 		if (other.type.equals(EntityType.Enemy)) {
 			this.isActive = false; // die
 		}
