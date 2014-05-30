@@ -8,7 +8,7 @@ import java.util.Queue;
 /**
  * Represents a game map.
  * 
- * @author yujinwunz
+ * @author Yujin, Luke, Steele, Michael 
  * 
  */
 public class GameMap {
@@ -141,9 +141,9 @@ public class GameMap {
 	
 	/**
 	 * Gives shortest path using only walls as collisions.
-	 * @param from
-	 * @param to
-	 * @return
+	 * @param from coordinate from
+	 * @param to coordinate to
+	 * @return shortest path as a list
 	 */
 	public ArrayList <Coord> shortestPath(Coord from, Coord to) {
 		return shortestPath(from, to, null, new ArrayList<Entity>());
@@ -223,10 +223,23 @@ public class GameMap {
 		}
 	}
 	
+	/**
+	 * Check if a square can be entered
+	 * @param check The coordinate to check
+	 * @param reference Entities to ignore when cehcking
+	 * @return True if it can enter, otherwise false
+	 */
 	public boolean canEnter (Coord check, Entity reference) {
 		return canEnter(check, reference, new ArrayList<Entity>());
 	}
 	
+	/**
+	 * Checks if a square can be entered
+	 * @param check The coordinate to check
+	 * @param reference The entity trying to enter
+	 * @param ignore Entities to ignore when checking
+	 * @return True if it can be entered, otherwise false
+	 */
 	public boolean canEnter (Coord check, Entity reference, ArrayList <Entity> ignore) {
 		if (reference == null) {
 			// Special case. Collide only with walls.
@@ -255,6 +268,10 @@ public class GameMap {
 		return false; // TODO
 	}
 	
+	/**
+	 * Get a list of entities
+	 * @return list of entities
+	 */
 	public ArrayList <Entity> entityList() {
 		cleanEntityList(entities);
 		return (ArrayList <Entity>)entities.clone();

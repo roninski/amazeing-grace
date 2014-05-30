@@ -2,7 +2,11 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
-
+/**
+ * An enemy which can pathfind
+ * @author Yujin, Luke, Steele, Michael 
+ *
+ */
 public class PathfindingEnemy extends Entity {
 
 	public PathfindingEnemy(GameMap map) {

@@ -1,7 +1,11 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-
+/**
+ * A map creator for generating maps using Prim's Maze Generation Algorithm
+ * @author Yujin, Luke, Steele, Michael 
+ *
+ */
 public class PrimsCreator implements MapCreator {
 
 	int numWallSize, numJumps;

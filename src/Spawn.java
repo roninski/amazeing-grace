@@ -1,7 +1,11 @@
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-
+/**
+ * Player Spawn Entity
+ * @author Yujin, Luke, Steele, Michael 
+ *
+ */
 public class Spawn extends Entity{
 
 	public Spawn(GameMap map) {

@@ -12,6 +12,9 @@ import javax.swing.JFrame;
 public class Amazeing {
 	private static Display gameInterface;
 	
+	/**
+	 * Shows the GUI
+	 */
 	private static void createAndShowGUI() {
 		// load images
 		Images images = new Images();
@@ -40,6 +43,9 @@ public class Amazeing {
 		t.start();
 	}
 	
+	/**
+	 * Enters the main menu
+	 */
 	private static void enterMainMenu() {
 		// Attach a main menu.
 	
@@ -61,11 +67,15 @@ public class Amazeing {
 		}
 	}
 	
+	// Not implemented
 	private static void leaderboard() {
 		// Load the leaderboard, display it in a JPanel.
 		
 	}
 	
+	/**
+	 * Enter a randomised quick play game
+	 */
 	private static void enterQuickplay() {
 		while (true) {
 			Menu quickplay = new Menu("Select difficulty");
@@ -91,6 +101,9 @@ public class Amazeing {
 		}
 	}
 	
+	/**
+	 * Enter hard-coded level selection
+	 */
 	private static void enterLevelSelect() {
 		while (true) {
 			Menu options = new Menu("Options");
@@ -171,7 +184,8 @@ public class Amazeing {
 		
 		submitCampaignHighscore ();
 	}
-
+	
+	// not implemented
 	private static void submitCampaignHighscore () {
 		// TODO: check if we qualify. If yes, ask for name, enter scoreboard.
 		// If no, main menu.
@@ -179,7 +193,6 @@ public class Amazeing {
 		// scoring goes: 1. levels passed 2. total score in all passed levels
 		enterMainMenu();
 	}
-	
 	
 	public static void main(String[] args) {
 		// Schedule a job for the event dispatch thread:

@@ -2,6 +2,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+/**
+ * An entity within the maze
+ * @author Yujin, Luke, Steele, Michael 
+ *
+ */
 public abstract class Entity {
 	// The current animation frame number, used in choosing the sprite to draw
 	// in animations.

@@ -4,6 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+/**
+ * Class for all image assets
+ * @author Yujin, Luke, Steele, Michael 
+ *
+ */
 public class Images {
 	public static ArrayList<BufferedImage> images;
 	public static final int LOGO = 0;

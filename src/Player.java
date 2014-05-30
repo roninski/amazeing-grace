@@ -1,6 +1,11 @@
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+/**
+ * A special entity representing the player
+ * @author Yujin, Luke, Steele, Michael 
+ *
+ */
 public class Player extends Entity {
 	public PlayerAction action = PlayerAction.Pass;
 	public double opacity;
@@ -94,7 +99,10 @@ public class Player extends Entity {
 		action = PlayerAction.Unknown;
 		moves ++;
 	}
-
+	
+	/**
+	 * Code for using whatever item is held. By default a gun.
+	 */
 	public void use() {
 
 		if (ammo <= 0) {

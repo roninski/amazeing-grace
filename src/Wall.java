@@ -1,7 +1,11 @@
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-
+/**
+ * Entity for a wall
+ * @author Yujin, Luke, Steele, Michael 
+ *
+ */
 public class Wall extends Entity {
 	public Wall(GameMap map) {
 		super(map, DRAW_INDEX_BACKGROUND, TICK_INDEX_BACKGROUND, EntityType.Wall);

@@ -5,6 +5,15 @@ import java.util.Random;
 public class QuickPlayCreator extends PrimsCreator {
 	Difficulty difficulty;
 	
+	/**
+	 * Constructor for QuickPlay
+	 * @param width The width of the maze
+	 * @param height The height of the maze
+	 * @param minWallSize The smallest segment of wall allowed to be left behind after destroying a wall.
+	 * @param numJumps Number of walls to destroy. -1 indicates unlimited as long as there's a legal wall to destroy.
+	 * @param seed Seed for the level
+	 * @param difficulty Name of the difficulty for the level
+	 */
 	public QuickPlayCreator(int width, int height, int minWallSize,
 			int numJumps, long seed, Difficulty difficulty) {
 		super(width, height, minWallSize, numJumps, seed);

@@ -102,7 +102,11 @@ public class GameRunner extends JPanel implements KeyListener {
 		g.setClip(bound.x, bound.y, bound.width, bound.height);
 		this.paintChildren(g);
 	}
-
+	
+	/**
+	 * Draws the hud
+	 * @param g graphic to draw to
+	 */
 	public void drawHUD(Graphics g) {
 		Rectangle r = g.getClipBounds();
 		g.setColor(Color.BLACK);
@@ -134,7 +138,10 @@ public class GameRunner extends JPanel implements KeyListener {
 	public void keyTyped(KeyEvent e) {
 		// Do nothing.
 	}
-
+	
+	/**
+	 * Handle key presses
+	 */
 	public void keyPressed(KeyEvent e) {
 
 		System.out.println("KeyPressed");

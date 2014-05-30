@@ -2,6 +2,11 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
 
+/**
+ * An enemy which moves semi-randomly (patrolling with current implemenation)
+ * @author Yujin, Luke, Steele, Michael 
+ *
+ */
 public class RandomEnemy extends Entity {
 	public RandomEnemy(GameMap map) {
 		super(map, DRAW_INDEX_AGENT, TICK_INDEX_AGENT, EntityType.Enemy);

@@ -69,10 +69,18 @@ public class Display {
 		});
 	}
 	
+	/**
+	 * Get the width of the frame
+	 * @return frame width
+	 */
 	public int getWidth() {
 		return frame.getWidth();
 	}
 	
+	/**
+	 * Get the height of the frame
+	 * @return frame height
+	 */
 	public int getHeight() {
 		return frame.getHeight();
 	}
