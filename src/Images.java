@@ -51,17 +51,17 @@ public class Images {
 			images.add(ImageIO.read(new File("img/dumbenemy.gif")));
 			images.add(ImageIO.read(new File("img/exit.gif")));			
 			images.add(ImageIO.read(new File("img/start.gif")));
-			images.add(ImageIO.read(new File("img/grace-l.gif")));			
-			images.add(ImageIO.read(new File("img/grace-u.gif")));			
-			images.add(ImageIO.read(new File("img/grace-d.gif")));			
-			images.add(ImageIO.read(new File("img/grace-r.gif")));			
+			images.add(ImageIO.read(new File("img/gracegun-l.gif")));			
+			images.add(ImageIO.read(new File("img/gracegun-u.gif")));			
+			images.add(ImageIO.read(new File("img/gracegun-d.gif")));			
+			images.add(ImageIO.read(new File("img/gracegun-r.gif")));			
 			images.add(ImageIO.read(new File("img/bomb.gif")));		
 			images.add(ImageIO.read(new File("img/blood.gif")));
 
-			images.add(ImageIO.read(new File("img/grace-blood-l.gif")));			
-			images.add(ImageIO.read(new File("img/grace-blood-u.gif")));			
-			images.add(ImageIO.read(new File("img/grace-blood-d.gif")));			
-			images.add(ImageIO.read(new File("img/grace-blood-r.gif")));
+			images.add(ImageIO.read(new File("img/gracegun-blood-l.gif")));			
+			images.add(ImageIO.read(new File("img/gracegun-blood-u.gif")));			
+			images.add(ImageIO.read(new File("img/gracegun-blood-d.gif")));			
+			images.add(ImageIO.read(new File("img/gracegun-blood-r.gif")));
 			
 			images.add(ImageIO.read(new File("img/spacebar.jpg")));
 			images.add(ImageIO.read(new File("img/gun.png")));
