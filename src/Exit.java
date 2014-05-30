@@ -1,11 +1,7 @@
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-/**
- * The exit point entity - for signifying where the exit is in the maze.
- * 
- * @author Yujin, Michael, Luke, Steele
- */
+
 public class Exit extends Entity{
 
 	public Exit(GameMap map) {
@@ -13,10 +9,7 @@ public class Exit extends Entity{
 		
 	}
 
-	/**
-	 * Paints this object's image onto the next display canvas to be drawn.
-	 * @param The canvas to paint on to
-	 */
+
 	@Override
 	public void draw(Graphics g) {
 		Rectangle r = g.getClipBounds();

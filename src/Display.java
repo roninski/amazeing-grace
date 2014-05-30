@@ -8,11 +8,8 @@ import javax.swing.SwingUtilities;
 
 
 /**
- * When initialized to a jFrame, this class directs flow of input. 
- * This abstracts away Java's swing input and output mechanisms
- * into something suited for the game.
- * 
- * @author Yujin, Luke, Steele, Michael
+ * When initialized to a jFrame, directs flow of input. This abstracts away java's weird swing input and output mechanisms into something nicer.
+ *
  */
 public class Display {
 	public JFrame frame;
@@ -72,24 +69,14 @@ public class Display {
 		});
 	}
 	
-	/**
-   	 * Access the width of the frame
-   	 * @return width of the frame as an int
-	 */	
 	public int getWidth() {
 		return frame.getWidth();
 	}
 	
-	/**
-   	 * Access the height of the frame
-   	 * @return height of the frame as an int
-	 */
 	public int getHeight() {
 		return frame.getHeight();
 	}
 	
-	// Default starting width, height, and period of a frame in ms
-	// FPS = 1000/FRAME_DELAY_MS
 	public static int DEFAULT_WIDTH = 1000;
 	public static int DEFAULT_HEIGHT = 800;
 	public static int FRAME_DELAY_MS = 20;
