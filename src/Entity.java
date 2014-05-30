@@ -2,6 +2,14 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+/**
+ * The basic super-class from which anything drawn on the screen inherits.
+ * (floor excluded). What's included:
+ * Wall, all enemies, player, blood
+ * 
+ * @author Yujin, Luke, Steele, Michael 
+ *
+ */
 public abstract class Entity {
 	// The current animation frame number, used in choosing the sprite to draw
 	// in animations.
@@ -23,9 +31,13 @@ public abstract class Entity {
 	// The entity with the highest tick index gets ticked first
 	public int tickIndex;
 
+	// A way of determining the specific enemy instance during run-time.
 	public EntityType type;
+	
+	// A reference to the map this entity is contained by
 	protected GameMap map;
 	
+	// Current direction which the enemy is moving
 	Direction direction = Direction.Down;
 	
 	
@@ -37,6 +49,10 @@ public abstract class Entity {
 		
 	}
 	
+	/**
+	 * Tell the entity which map contains it
+	 * 
+	 * @param the map this entity is on
 	public void setMap(GameMap map) {
 		this.map = map;
 	}
@@ -77,10 +93,18 @@ public abstract class Entity {
 		// Default tick
 	}
 	
+	/**
+	 * Access entity's current location
+	 * @return current location
+	 */
 	public Coord getCurrentLocation(){
 		return this.currentlocation;
 	}
 	
+	/**
+	 * Access entity's type
+	 * @return the type of this entity
+	 */
 	public EntityType getType(){
 		return this.type;
 	}
