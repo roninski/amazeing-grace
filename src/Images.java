@@ -39,7 +39,7 @@ public class Images {
 	public Images() {
 		images = new ArrayList<BufferedImage>();
 		try {
-			images.add(ImageIO.read(new File("img/logo.gif")));
+			images.add(ImageIO.read(new File("img/logo-2.gif")));
 			images.add(ImageIO.read(new File("img/wasd.jpg")));
 			images.add(ImageIO.read(new File("img/uldr.jpg")));
 			images.add(ImageIO.read(new File("img/grace.gif")));
