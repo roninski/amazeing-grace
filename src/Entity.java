@@ -65,7 +65,6 @@ public abstract class Entity {
 	 * CURRENT LOCATION when updating its tick. This lets the collision engine
 	 * resolve properly.
 	 * 
-	 * @param m
 	 */
 	public final void ontick() {
 		this.nextlocation = this.currentlocation;
@@ -92,7 +91,7 @@ public abstract class Entity {
 	
 	/**
 	 * If we collide with this entity, should we physically collide?
-	 * @return
+	 * @return whether the objects should collide
 	 */
 	public boolean shouldBumpInto(Entity other) {
 		return false;
@@ -110,7 +109,7 @@ public abstract class Entity {
 	 * this list who share no layers in common and have the same coordinates as
 	 * us.
 	 * 
-	 * @param others
+	 * @param other the other Entity
 	 */
 	public void collide(Entity other) {
 		

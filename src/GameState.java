@@ -19,9 +19,7 @@ public class GameState {
 	
 	/**
 	 * Creates a new game state with the given map creator and stuff.
-	 * @param strategy
-	 * @param width
-	 * @param height
+	 * @param strategy the strategy for creating the map
 	 */
 	public GameState(MapCreator strategy) {
 		this.map = new GameMap(strategy);
@@ -189,7 +187,7 @@ public class GameState {
 	/**
 	 * Returns the height of this game
 	 * 
-	 * @return
+	 * @return the height
 	 */
 	public int getHeight() {
 		return map.getHeight();
@@ -198,7 +196,7 @@ public class GameState {
 	/**
 	 * Returns the width of this game
 	 * 
-	 * @return
+	 * @return the width
 	 */
 	public int getWidth() {
 		return map.getWidth();

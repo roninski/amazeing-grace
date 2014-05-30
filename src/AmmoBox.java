@@ -19,7 +19,7 @@ public class AmmoBox extends Entity{
 	
 	/**
 	 * Paints this object's image onto the next display canvas to be drawn.
-	 * @param The canvas to paint on to
+	 * @param g The canvas to paint on to
 	 */
 	@Override
 	public void draw(Graphics g) {

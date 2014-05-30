@@ -34,7 +34,7 @@ public class GameRunner extends JPanel implements KeyListener {
 	 * HANGS.
 	 * 
 	 * @param d
-	 * @return
+	 * @return the resulting state
 	 */
 	public GameResult play(Display d) {
 		d.possess(this, this, null, null, null);

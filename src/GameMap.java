@@ -85,8 +85,8 @@ public class GameMap {
 	
 	/**
 	 * Returns a list of entities on the specified coordinate
-	 * @param c
-	 * @return
+	 * @param c the coordinate
+	 * @return a list of entities on the coordinate
 	 */
 	public ArrayList<Entity> getInCoord(Coord c) {
 		if (!byCoord.containsKey(c)) {
@@ -106,8 +106,7 @@ public class GameMap {
 	
 	/**
 	 * The spawn location is where we start our lives.
-	 * @param e
-	 * @return
+	 * @return the spawn location
 	 */
 	public Coord getSpawnLocation() {
 		return spawn;
@@ -115,8 +114,7 @@ public class GameMap {
 	
 	/**
 	 * The exit location is where we win.
-	 * @param e
-	 * @return
+	 * @return the exit
 	 */
 	public Coord getExitLocation() {
 		return exit;
@@ -152,11 +150,10 @@ public class GameMap {
 	/**
 	 * Finds the shortest path from "from" to "to". The path will exclude "from".
 	 * 
-	 * @param from
-	 * @param to
-	 * @param collisions
-	 *            List of collision layers to avoid. If null, all collision
-	 *            layers are avoided.
+	 * @param from The starting coordinate
+	 * @param to The ending coordinate
+	 * @param reference
+	 *            The entity we're testing for collisions
 	 * @param ignore
 	 *            List of entities to ignore when colliding. Include, for
 	 *            example, the enemy which is trying to find the path, into this
