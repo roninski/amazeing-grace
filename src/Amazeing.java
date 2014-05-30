@@ -3,6 +3,12 @@ import java.util.Random;
 
 import javax.swing.JFrame;
 
+/**
+ * The main class. Creates the GUI and sets the game running.
+ * 
+ * @author Yujin, Luke, Steele, Michael 
+ *
+ */
 public class Amazeing {
 	private static Display gameInterface;
 	
