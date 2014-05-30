@@ -77,7 +77,7 @@ public class Display {
 		return frame.getHeight();
 	}
 	
-	public static int DEFAULT_WIDTH = 600;
-	public static int DEFAULT_HEIGHT = 400;
+	public static int DEFAULT_WIDTH = 1000;
+	public static int DEFAULT_HEIGHT = 800;
 	public static int FRAME_DELAY_MS = 20;
 }

@@ -30,6 +30,8 @@ public class LevelLoader implements MapCreator{
 					toAdd = new RandomEnemy(null);
 				} else if (data[y].charAt(x) == 'P'){
 					toAdd = new PathfindingEnemy(null);
+				} else if (data[y].charAt(x) == 'A'){
+					toAdd = new AmmoBox(null);
 				}
 				
 				if (toAdd != null) {

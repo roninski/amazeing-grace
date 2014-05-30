@@ -71,7 +71,7 @@ public class GameRunner extends JPanel implements KeyListener {
 
 	@Override
 	public void paintComponent(Graphics g) {
-		final int hud_width = 150;
+		final int hud_width = 250;
 		
 		Rectangle bound = g.getClipBounds();
 		// Finds a normalized bounding box and draws that.
@@ -102,9 +102,26 @@ public class GameRunner extends JPanel implements KeyListener {
 		g.setFont(new Font("Helvetica", Font.PLAIN, 18));
 		g.fillRect(r.x, r.y, r.width, r.height);
 		g.setColor(Color.WHITE);
-		g.drawString("Score:", r.x, r.y + r.height/5);
 		//g.drawString(score, r.x, r.y + 2*r.height/5);
-		g.drawString("Press ESC to Quit", r.x, r.y + r.height - 1);
+		
+		int centery = r.height/2;
+		// Draw ASDF controls for Grace
+		g.drawImage(Images.images.get(Images.ULDR), r.x + 90, r.y + centery - 250, 160, 160, null);
+		g.drawImage(Images.images.get(Images.GRACE_D), r.x + 20, r.y + centery - 200, 70, 70, null);
+		
+
+		// Draw spacebar controls for gun and ammo count
+		g.drawImage(Images.images.get(Images.SPACEBAR), r.x + 90, r.y + centery - 100, 160, 160, null);
+		g.drawImage(Images.images.get(Images.GUN), r.x + 20, r.y + centery - 50, 70, 70, null);
+		
+		// Draw bullet count
+		int bullets = Math.min(20, state.getPlayer().ammo);
+		for (int i = 0; i < bullets; i++) {
+			g.drawImage(Images.images.get(Images.BULLET), r.x + 120 + 10 * i, r.y + centery + 40, 10, 32, null);
+		}
+
+		g.drawString("AMMO:", r.x + 20,  r.y + centery + 70);
+		g.drawString("Press ESC to Quit", r.x + 50, r.y + r.height - 20);
 	}
 	
 	public void keyTyped(KeyEvent e) {
@@ -137,12 +154,14 @@ public class GameRunner extends JPanel implements KeyListener {
 			shouldTick = false;
 			if (Sound.gunshot.isPlaying()){
 				Sound.gunshot.stop();
+				Sound.click.stop();
 			}
 		}
 		
 		if (shouldTick) {
 			if (Sound.gunshot.isPlaying()){
 				Sound.gunshot.stop();
+				Sound.click.stop();
 			}
 			this.frames = 0;
 			state.tick();

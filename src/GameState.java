@@ -9,7 +9,6 @@ public class GameState {
 	private boolean won = false;
 	private int points = 0;
 	private GameMap map;
-
 	private int lives;
 
 	private Player player;
@@ -161,6 +160,7 @@ public class GameState {
 		if (player.currentlocation.equals(map.getExitLocation())) {
 			won = true;
 		}
+		
 	}
 
 	public boolean isGameOver() {

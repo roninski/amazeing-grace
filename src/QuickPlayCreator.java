@@ -15,17 +15,20 @@ public class QuickPlayCreator extends PrimsCreator {
 	@Override
 	public ArrayList<Entity> create() {
 		ArrayList<Entity> entities =  super.create();
-		int numRandom, numPathfinding;
+		int numRandom, numPathfinding, numAmmoBox;
 		Random r = new Random();
 		if (this.difficulty == Difficulty.hard) {
 			numRandom = 50;
 			numPathfinding = 20;
+			numAmmoBox = 5;
 		} else if (this.difficulty == Difficulty.medium){
 			numRandom = 8;
 			numPathfinding = 4;
+			numAmmoBox = 2;
 		} else {
 			numRandom = 4;
 			numPathfinding = 0;
+			numAmmoBox = 1;
 		}
 		
 		int x = 0;
@@ -66,6 +69,25 @@ public class QuickPlayCreator extends PrimsCreator {
 				e.nextlocation = new Coord(x,y);
 				entities.add(e);
 				numRandom--;
+			}
+		}
+		while (numAmmoBox > 0){
+			x = Math.abs(r.nextInt()%width);
+			y = Math.abs(r.nextInt()%height);
+			boolean unused = true;
+			for (Entity e : entities){
+				if (e.getCurrentLocation().equals(new Coord(x,y)) ||
+						new Coord(x,y).euclidianDistance(new Coord(0,0)) < 4){
+					unused = false;
+					break;
+				}
+			}
+			if (unused){
+				Entity e = new AmmoBox(null);
+				e.currentlocation = new Coord(x, y);
+				e.nextlocation = new Coord(x,y);
+				entities.add(e);
+				numAmmoBox--;
 			}
 		}
 		

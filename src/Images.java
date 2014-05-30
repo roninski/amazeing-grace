@@ -29,6 +29,12 @@ public class Images {
 	public static final int GRACE_BLOOD_U = 19;	
 	public static final int GRACE_BLOOD_D = 20;	
 	public static final int GRACE_BLOOD_R = 21;
+	
+	public static final int SPACEBAR = 22;
+	public static final int GUN = 23;
+	
+	public static final int BULLET = 24;
+	public static final int AMMO = 25;
 	public Images() {
 		images = new ArrayList<BufferedImage>();
 		try {
@@ -54,7 +60,12 @@ public class Images {
 			images.add(ImageIO.read(new File("img/grace-blood-l.gif")));			
 			images.add(ImageIO.read(new File("img/grace-blood-u.gif")));			
 			images.add(ImageIO.read(new File("img/grace-blood-d.gif")));			
-			images.add(ImageIO.read(new File("img/grace-blood-r.gif")));	
+			images.add(ImageIO.read(new File("img/grace-blood-r.gif")));
+			
+			images.add(ImageIO.read(new File("img/spacebar.jpg")));
+			images.add(ImageIO.read(new File("img/gun.png")));
+			images.add(ImageIO.read(new File("img/bullet.png")));
+			images.add(ImageIO.read(new File("img/ammo.png")));
 		} catch (IOException ex) {
 			System.out.println("missing file");
 			System.out.println(images.size());

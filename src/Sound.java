@@ -5,6 +5,7 @@ import javax.sound.sampled.Clip;
 public class Sound {
 	public static Sound amazinggrace = new Sound("../sound/AmazingGrace.wav", true);
 	public static Sound gunshot = new Sound("../sound/gunshot.wav", false);
+	public static Sound click = new Sound("../sound/click.wav", false);
 	
 	private String filename;
 	private AudioInputStream audioInputStream;
