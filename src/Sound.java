@@ -13,6 +13,8 @@ public class Sound {
 	private boolean isPlaying = false;
 	
 	Sound(String s, boolean loop){
+		
+		
 		this.filename = s;
 		this.willLoop = loop;
 		try{
